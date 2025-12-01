@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Drizzle ORM Template
+
+A quick-start template for building Next.js applications with Drizzle ORM and PostgreSQL.
+
+## Tech Stack
+
+- **Next.js 16** - React framework with App Router
+- **React 19** - UI library
+- **Drizzle ORM** - TypeScript ORM for PostgreSQL
+- **PostgreSQL** - Relational database
+- **TypeScript** - Type safety
+- **Tailwind CSS 4** - Utility-first CSS framework
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+ 
+- pnpm (or npm/yarn/bun)
+
+### Installation
+
+1. Clone or use this template
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file in the root directory:
+   ```env
+   DATABASE_URL=your_postgresql_connection_string
+   ```
+
+4. Generate and run migrations:
+   ```bash
+   pnpm db:generate
+   pnpm db:migrate
+   ```
+
+5. Start the development server:
+   ```bash
+   pnpm dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Available Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
+- `pnpm db:generate` - Generate database migrations from schema
+- `pnpm db:migrate` - Run database migrations
+- `pnpm db:studio` - Open Drizzle Studio (database GUI)
+
+## Project Structure
+
+```
+├── app/              # Next.js App Router pages and layouts
+├── db/
+│   ├── schema.ts     # Drizzle schema definitions
+│   └── drizzle.ts     # Database connection setup
+├── drizzle.config.ts # Drizzle Kit configuration
+└── .env              # Environment variables (create this)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Database
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The template includes an example `user` table schema in `db/schema.ts`. Modify it to match your needs, then:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Update your schema in `db/schema.ts`
+2. Generate migrations: `pnpm db:generate`
+3. Apply migrations: `pnpm db:migrate`
 
-## Learn More
+Use `pnpm db:studio` to visually explore and edit your database.
 
-To learn more about Next.js, take a look at the following resources:
+## Resources
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Drizzle ORM Documentation](https://orm.drizzle.team)
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
